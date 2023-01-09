@@ -1,6 +1,9 @@
+# 파이썬 설치된 이미지 가져옴
 FROM python:3.6.7
 
+# 환경변수 세팅
 ENV PYTHONUNBUFFERED 1
+
 
 RUN apt-get -y update
 RUN apt-get -y install vim

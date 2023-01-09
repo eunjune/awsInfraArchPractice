@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from order import views
+from user import views
 
 urlpatterns = [
-    path('user/', views.shop, name="user"),
-    path('login/', views.shop, name="login"),
+    path('user/', views.user, name="user"),
+    path('login/', views.login, name="login"),
 ]

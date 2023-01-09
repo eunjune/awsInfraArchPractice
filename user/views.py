@@ -29,7 +29,7 @@ def login(request):
 
         try:
             request.session['user_id'] = User.objects.all().get(name=name).id
-            print(request.session['user_id'])
+            # print(request.session['user_id'])
             return render(request, 'user/success.html')
         except:
             return render(request, 'user/fail.html')

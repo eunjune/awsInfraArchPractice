@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from order.models import Shop
 from user.models import User
 
 
