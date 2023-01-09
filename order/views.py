@@ -6,14 +6,18 @@ from rest_framework.parsers import JSONParser
 
 from order.models import Shop, Order, Menu
 from order.serializers import ShopSerializer
+from user.models import User
 
 
 # Create your views here.
 @csrf_exempt
 def shop(request):
     if request.method == 'GET':
-        shop = Shop.objects.all()
-        serializer = ShopSerializer(shop, many=True)
+        if User.objects.all().get(id=request.session['user_id']).user_type==0:
+            shop = Shop.objects.all()
+            return render(request,'order/shop_list.html',{'shop_list':shop})
+        else:
+            return render(request,'order/fail.html')
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':

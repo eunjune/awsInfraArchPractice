@@ -16,11 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from order import views
+
 urlpatterns = [
-    path('order/', include('order.urls')),
-    path('boss/', include('boss.urls')),
-    path('delivery/', include('delivery.urls')),
-    path('user/', include('user.urls')),
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('user/', views.shop, name="user"),
+    path('login/', views.shop, name="login"),
 ]
