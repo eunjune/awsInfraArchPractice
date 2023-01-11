@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: docker-django/nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./awsInfraArchPractice:/srv/docker-django
+      - ./log:/var/log/nginx
+    depends_on:
+      - django
+
+  django:
+    container_name: django
+    build: ./fastcampus_test
+    image: docker-django/django
+    restart: always
+    command: uwsgi --ini uwsgi.ini
+    volumes:
+      - /awsInfraArchPractice:/srv/docker-django
+      - ./log:/var/log/uwsgi
